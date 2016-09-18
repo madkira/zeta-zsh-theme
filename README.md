@@ -21,7 +21,7 @@ Another :star:theme for oh-my-zsh
     * `?` —— Untracked changes
 * Git last time commit (take from the smt theme)
 * Prompt indicator turns red if the last run fails
-* Current time
+* Current time in second
 
 ## License
 The MIT License.

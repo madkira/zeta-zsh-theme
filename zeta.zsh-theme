@@ -74,7 +74,7 @@ ZSH_THEME_GIT_TIME_SINCE_COMMIT_NEUTRAL="%{$cyan%}"
 
 # Determine the time since last commit. If branch is clean,
 # use a neutral color, otherwise colors will vary according to time.
-function git_time_since_commit {
+function git_time_since_commit() {
     if git rev-parse --git-dir > /dev/null 2>&1; then
         # Only proceed if there is actually a commit.
         if [[ $(git log 2>&1 > /dev/null | grep -c "^fatal: bad default revision") == 0 ]]; then
@@ -122,7 +122,7 @@ function get_git_prompt {
     if [[ -n $(git rev-parse --is-inside-work-tree 2>/dev/null) ]]; then
         local git_status="$(git_prompt_status)"
         if [[ -n $git_status ]]; then
-            git_status="[$git_status%{$reset_color%}]"
+            git_status="[$git_status%{$reset_color%}]$(git_time_since_commit)"
         fi
         local git_prompt=" <$(git_prompt_info)$git_status>"
         echo $git_prompt
@@ -157,7 +157,6 @@ function print_prompt_head {
 %{$yellow_bold%}$(get_current_dir)%{$reset_color%}\
 $(get_git_prompt) "
     local right_prompt="%{$blue%}($(get_time_stamp))%{$reset_color%} "
-    print -rP "$(git_time_since_commit)"
     print -rP "$left_prompt$(get_space $left_prompt $right_prompt)$right_prompt"
 }
 

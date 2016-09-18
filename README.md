@@ -19,7 +19,9 @@ Another :star:theme for oh-my-zsh
     * `>` —— Renamed files
     * `=` —— Unmerged changes
     * `?` —— Untracked changes
+* Git last time commit (take from the smt theme)
 * Prompt indicator turns red if the last run fails
+* Current time
 
 ## License
 The MIT License.
